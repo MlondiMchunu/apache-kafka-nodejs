@@ -1,16 +1,15 @@
 const { Kafka } = require("kafkajs")
 
-
-run();
-
 async function run() {
-    try {
-        const kafka = new Kafka({
-            "clientId": "myapp",
-            "brokers": ["192.18.7.179:9092"]
-        })
 
-        const admin = kafka.admin();
+    const kafka = new Kafka({
+        "clientId": "myapp",
+        "brokers": ["192.168.7.179:9092"]
+    })
+
+    const admin = kafka.admin();
+    try {
+
         console.log("connecting...")
         await admin.connect()
         console.log("Connected!")
@@ -19,14 +18,17 @@ async function run() {
             "topics": [{
                 "topic": "myUsers",
                 "numPartitions": 2
-            }]
+            }],
         })
         console.log("Created succesfully")
-        await admin.disconnect();
-    }catch(error){
+        
+    } catch (error) {
         console.error(`Something wrong happened ${error}`)
     }
-    finally{
-        process.exit(o)
+    finally {
+        await admin.disconnect();
+        process.exit(0)
     }
 }
+
+run();
