@@ -1,0 +1,14 @@
+{
+  "name": "apache-kafka-nodejs",
+  "version": "1.0.0",
+  "description": "### to start  and run the container images in the cluster     docker-compose up",
+  "main": "consumer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "kafkajs": "^2.2.4"
+  }
+}
